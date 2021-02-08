@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1 Task</title>
+</head>
+<body>
+<div id="container">
+
+</div>
+
+<button id="btn" onclick="load()">Submit</button>
+
+</body>
+<script>
+    function load() {
+        let el = document.getElementById("container");
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "users.json", true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) return;
+            if (xhr.status !== 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                let jsonData = JSON.parse(xhr.responseText);
+                console.log(jsonData)
+                let list = "<ul>";
+                jsonData.forEach(user=> {
+                    list+=`<li>${user.name}</li>`
+                });
+                list+="</ul>";
+                el.innerHTML = list;
+            }
+        }
+    }
+</script>
+</html>
