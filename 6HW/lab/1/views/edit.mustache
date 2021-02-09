@@ -1,0 +1,27 @@
+{{>header}}
+<div class="container">
+    <div class="py-2 text-center">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="container">
+        <form method="POST" action="{{route_url}}/edit/{{data.id}}"
+              enctype="application/x-www-form-urlencoded">
+
+            <p>Widget name:<input type="text" name="name" id="name" value="{{data.name}}"/></p>
+
+            <p>Widget price:<input type="text" name="price" id="price" value="{{data.price}}"/></p>
+
+            <p>Widget description:<input type="text" name="desc" id="desc" value="{{data.desc}}"/></p>
+            <p>
+                <input class="btn btn-primary"
+                       type="submit" name="submit"
+                       id="submit" value="Submit"/>
+                <a href="{{route_url}}/"
+                   class="btn btn-secondary">Reset</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+{{>footer}}
+
